@@ -49,6 +49,27 @@
 
     </LinearLayout>
 
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4dp">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1 KICK   " android:textColor="#FFFFFF" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 RIM   " android:textColor="#FFFFFF" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3 SNARE   " android:textColor="#FFFFFF" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4 CLAP   " android:textColor="#FFFFFF" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="5 TOM   " android:textColor="#FFFFFF" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="6 CLOSED HAT   " android:textColor="#FFFFFF" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="7 OPEN HAT   " android:textColor="#FFFFFF" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="8 CRASH" android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
     <com.beatmaker.beatmaker.BeatView
         android:id="@+id/mainView"
         android:layout_width="match_parent"
