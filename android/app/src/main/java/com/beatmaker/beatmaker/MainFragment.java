@@ -27,6 +27,7 @@ import java.util.List;
 public class MainFragment extends Fragment implements ApplicationListener, SequencerListener {
 
     private FragmentMainBinding ui;
+    private DrumSoundEngine drumSounds;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -75,6 +76,8 @@ public class MainFragment extends Fragment implements ApplicationListener, Seque
         ui = FragmentMainBinding.inflate(inflater, container, false);
         View view = ui.getRoot();
 
+        drumSounds = new DrumSoundEngine();
+
         ui.btnRewind.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,6 +112,14 @@ public class MainFragment extends Fragment implements ApplicationListener, Seque
     public void onSequencerPositionUpdate(SequencerPosition position, boolean stepChange) {
         if (!stepChange) return;
 
+        Sequencer soundSequencer = Sequencer.instance();
+        if (soundSequencer != null && position != null && drumSounds != null) {
+            int step = (int) position.getStep();
+            for (int track = 0; track < DrumSoundEngine.NAMES.length; track++) {
+                if (soundSequencer.hasData(track, step)) drumSounds.play(track);
+            }
+        }
+
         if (null == ui) return;
 
         if (null != ui.mainView) {
@@ -136,6 +147,7 @@ public class MainFragment extends Fragment implements ApplicationListener, Seque
 
     @Override
     public void onApplicationShutdown() {
+        if (drumSounds != null) drumSounds.release();
         ui.mainView.stop();
     }
 
